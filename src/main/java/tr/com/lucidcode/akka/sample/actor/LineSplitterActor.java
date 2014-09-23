@@ -1,8 +1,8 @@
-package tr.com.lucidcode.akka.sample.hello;
+package tr.com.lucidcode.akka.sample.actor;
 
 import akka.actor.UntypedActor;
 
-public class Greeter extends UntypedActor {
+public class LineSplitterActor extends UntypedActor {
 
   public static enum Msg {
     GREET, DONE;
