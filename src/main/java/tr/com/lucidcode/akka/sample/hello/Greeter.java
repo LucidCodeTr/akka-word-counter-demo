@@ -1,4 +1,4 @@
-package sample.hello;
+package tr.com.lucidcode.akka.sample.hello;
 
 import akka.actor.UntypedActor;
 
