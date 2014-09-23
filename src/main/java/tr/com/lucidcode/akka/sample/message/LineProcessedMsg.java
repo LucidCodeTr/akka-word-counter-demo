@@ -1,4 +1,4 @@
-package tr.com.lucidcode.akka.sample.dto;
+package tr.com.lucidcode.akka.sample.message;
 
 public class LineProcessedMsg {
 	

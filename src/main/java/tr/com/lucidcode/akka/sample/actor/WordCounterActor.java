@@ -11,8 +11,8 @@ import java.io.LineNumberReader;
 
 import org.apache.log4j.Logger;
 
-import tr.com.lucidcode.akka.sample.dto.LineProcessedMsg;
-import tr.com.lucidcode.akka.sample.dto.ProcessLineMsg;
+import tr.com.lucidcode.akka.sample.message.LineProcessedMsg;
+import tr.com.lucidcode.akka.sample.message.ProcessLineMsg;
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
@@ -30,7 +30,7 @@ public class WordCounterActor extends UntypedActor {
 	@Override
 	public void preStart() throws IOException {
 
-		//path to file to read
+		// path to file to read
 		File fileToRead = new File(RESOURCES_DIR + "hipster_ipsum.txt");
 
 		// open up the hipster_ipsum.txt file located
@@ -40,7 +40,7 @@ public class WordCounterActor extends UntypedActor {
 		// create buffered reader
 		BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream));
 
-		//set total number of lines
+		// set total number of lines
 		totalLines = getNrOfLines(fileToRead);
 
 		// read through lines
@@ -81,17 +81,19 @@ public class WordCounterActor extends UntypedActor {
 		// and add that number to totalWords.
 		totalWords += lineProcessedMsg.getNumberOfWords();
 
+		logger.info(self().path().name() + " received message from " + sender().path().name() + " (" + lineProcessedMsg.getNumberOfWords() + ")");
+
 		// stop execution if all lines have been processed.
 		if (totalLines == linesProcessed) {
 			logger.info("Total Words: " + totalWords);
 			getContext().stop(getSelf());
 		}
-		
+
 		// increase by one the counter of lines read so far.
 		linesProcessed++;
 
 	}
-	
+
 	private Integer getNrOfLines(File fileToRead) throws FileNotFoundException, IOException {
 		LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(fileToRead));
 		lineNumberReader.skip(Long.MAX_VALUE);
