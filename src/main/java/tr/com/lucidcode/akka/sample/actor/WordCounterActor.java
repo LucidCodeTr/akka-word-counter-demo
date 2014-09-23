@@ -3,6 +3,7 @@ package tr.com.lucidcode.akka.sample.actor;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.apache.log4j.Logger;
@@ -64,11 +65,15 @@ public class WordCounterActor extends UntypedActor {
 			}
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream));
-			String line = reader.readLine();
-			while (line != null) {
-		        //process each line in some way
-		        log(line);
-		      } 
+			try {
+				while (reader.readLine() != null) {
+				    //process each line in some way
+				   
+				  }
+			} catch (IOException e) {
+				logger.error(e.getMessage());
+				return;
+			} 
 
 			break;
 		}
