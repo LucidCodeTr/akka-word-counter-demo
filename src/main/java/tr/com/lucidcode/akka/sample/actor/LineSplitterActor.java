@@ -1,3 +1,9 @@
+/**
+ * Created by Omer Gurarslan on 23/09/14.
+ * Copyright (C) 2103-2014 Lucid Bilg. Hiz. Ltd. Şti. 
+ * All rights reserved. <http://dev.lucidcode.com.tr>
+ */
+
 package tr.com.lucidcode.akka.sample.actor;
 
 import org.apache.log4j.Logger;
