@@ -1,14 +1,9 @@
 package tr.com.lucidcode.akka.sample.dto;
 
-import tr.com.lucidcode.akka.sample.type.MessageType;
-
-public class LineProcessedMsg extends GenericMessageDTO {
+public class LineProcessedMsg {
 	
 	private Integer numberOfWords;
 
-	public LineProcessedMsg() {
-		super(MessageType.LINE_PROCESSED);
-	}
 
 	public Integer getNumberOfWords() {
 		return numberOfWords;
